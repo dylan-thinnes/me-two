@@ -1,0 +1,26 @@
+<style>
+<% colours = { projects: "#44af69", blog: "#f8333c", contact: "#2b9eb3" } %>
+<% colours.each do |key, value| %>
+.<%= key %>-bg {
+    background-color: <%= value %>;
+}
+.<%= key %>-border {
+    border-color: <%= value %>;
+}
+.<%= key %>-text {
+    color: <%= value %>;
+}
+<% end %>
+<% main = colours[action_name.to_sym] %>
+<% unless main.nil? %>
+.main-bg {
+    background-color: <%= main %>;
+}
+.main-border {
+    border-color: <%= main %>;
+}
+.main-text {
+    color: <%= main %>;
+}
+<% end %>
+</style>

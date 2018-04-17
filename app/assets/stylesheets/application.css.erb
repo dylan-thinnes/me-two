@@ -13,12 +13,6 @@
  *= require_tree .
  *= require_self
  */
-<% colours = { projects: "#44af69", blog: "#f8333c", contact: "#2b9eb3" } %>
-<% colours.each do |key, value| %>
-.<%= key %>-bg {
-    background-color: <%= value %>
-}
-<% end %>
 a::selection {
 	background-color: transparent;
 }
@@ -73,6 +67,9 @@ a {
 body.open {
     justify-content: flex-start;
     margin-top: 0px;
+}
+body.open > #content {
+    flex-grow: 1;
 }
 body.open > #profile {
     height: 0px;
@@ -135,6 +132,12 @@ body.open > #blurb {
 	transition: opacity 0.5s ease-out 0s;
 	z-index: 0;
 	overflow-y: auto;
+    border-width: 0 5px 0 5px;
+    border-style: solid;
+}
+.section.selected {
+    z-index: 1;
+    opacity: 1;
 }
 .title {
 	font-size: 1.25em;

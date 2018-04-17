@@ -19,7 +19,10 @@
     </div>
     <div id="blurb">I am a student of Comp Sci at the University of Edinburgh.<br/>In my spare time, I enjoy camping, Aikido, and coding.</div>
     <div id="content">
-      <%= yield %>
+      <div class="section main-border selected">
+        <%= render "shared/styling" %>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
