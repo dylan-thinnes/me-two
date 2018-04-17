@@ -152,3 +152,21 @@ body.open > #blurb {
     z-index: 1;
     opacity: 1;
 }
+
+/* section colourings */
+<% colours = { projects: "#44af69", blog: "#f8333c", contact: "#2b9eb3" } %>
+<% colours.each do |key, value| %>
+.<%= key %>-bg {
+    background-color: <%= value %>;
+}
+.<%= key %> {
+    border-color: <%= value %>;
+}
+.<%= key %> h1, .<%= key %> h2, .<%= key %> h3, .<%= key %> h4, .<%= key %> h5, .<%= key %> h6 {
+    color: <%= value %>;
+    border-bottom: 2px solid <%= value %>;
+}
+.<%= key %> a {
+    color: <%= value %>;
+}
+<% end %>

@@ -13,14 +13,13 @@
     <div id="profile"></div>
     <div id="name">Dylan Thinnes</div>
     <div id="social">
-      <%= link_to " contact ", contact_path, class: "contact-bg" %>
+      <%= link_to " contact ",  contact_path,  class: "contact-bg"  %>
       <%= link_to " projects ", projects_path, class: "projects-bg" %>
-      <%= link_to " blog ", blog_path, class: "blog-bg" %>
+      <%= link_to " blog ",     blog_path,     class: "blog-bg"     %>
     </div>
     <div id="blurb">I am a student of Comp Sci at the University of Edinburgh.<br/>In my spare time, I enjoy camping, Aikido, and coding.</div>
     <div id="content">
-      <div class="section main-border selected">
-        <%= render "shared/styling" %>
+      <div class="section <%= action_name %> selected">
         <%= yield %>
       </div>
     </div>
