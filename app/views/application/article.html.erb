@@ -1,7 +1,7 @@
 <% if @article.nil? %>
     <h2>This article could not be found.</h2>
 <% else %>
-    <% provide :title, @article.title %>
+    <% set_title(@article.title) %>
     <%= to_markdown "###{@article.title}" %>
     <%= to_markdown "*#{@article.author}*" unless @article.author.nil? %>
     <%= to_markdown @article.content %>

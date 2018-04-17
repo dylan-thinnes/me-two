@@ -1,4 +1,4 @@
-<% provide :title, "Projects" %>
+<% set_title("Projects") %>
 <%= to_markdown "## projects" %>
 <% Project.all.each do |p| %>
   <%= to_markdown "

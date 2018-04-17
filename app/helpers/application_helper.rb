@@ -6,10 +6,12 @@ module ApplicationHelper
     @markdown.render(text).html_safe
   end
 
-  def title(text)
-    if text.present?; text = "#{text} | Dylan Thinnes"
-    else;             text = "Dylan Thinnes"
-    end
-    return text
+  def get_title
+    return @title if @title.present?
+    return "Dylan Thinnes"
+  end
+
+  def set_title(text)
+    @title = "#{text} | Dylan Thinnes"
   end
 end
