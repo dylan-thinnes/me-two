@@ -1,7 +1,8 @@
-<h2>blog</h2>
+<%= to_markdown "## blog" %>
 <% Article.all.each do |a| %>
-  <%= link_to a.title, "/articles/#{a.id}" %><br/>
-  <p>
-    <%= a.blurb %>
-  </p>
+  <%= to_markdown "
+  [#{a.title}](/article/#{a.id})
+  #{a.blurb}
+
+  " %>
 <% end %>

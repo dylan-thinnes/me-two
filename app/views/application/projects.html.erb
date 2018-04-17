@@ -1,7 +1,8 @@
-<h2>projects</h2>
+<%= to_markdown "## projects" %>
 <% Project.all.each do |p| %>
-  <%= link_to p.name, p.link %><br/>
-  <p>
-    <%= p.content %>
-  </p>
+  <%= to_markdown "
+  [#{p.name}](#{p.link})
+  #{p.content}
+
+  " %>
 <% end %>
