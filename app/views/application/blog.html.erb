@@ -1,3 +1,4 @@
+<% provide :title, "Dylan's Blog" %>
 <%= to_markdown "## blog" %>
 <% Article.all.each do |a| %>
   <%= to_markdown "
