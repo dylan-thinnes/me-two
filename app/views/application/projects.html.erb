@@ -2,7 +2,7 @@
 <%= to_markdown "## projects" %>
 <% Project.all.each do |p| %>
   <%= to_markdown "
-  [#{p.name}](#{p.link})
+  **[#{p.name}](#{p.link})**
   #{p.content}
 
   " %>
