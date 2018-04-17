@@ -14,5 +14,8 @@ module MeTwo
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.assets.css_compressor = :yui
+    config.assets.js_compressor = :uglifier
+    config.assets.gzip = true
   end
 end
