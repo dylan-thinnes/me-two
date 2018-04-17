@@ -10,7 +10,7 @@
 
   <body class="<%= "open" if @closed != true %>">
     <div id="spacer"></div>
-    <div id="profile"></div>
+    <%= render "profile" if action_name == "index" %>
     <div id="name">Dylan Thinnes</div>
     <div id="social">
       <%= link_to " contact ",  contact_path,  class: "contact-bg"  %>
