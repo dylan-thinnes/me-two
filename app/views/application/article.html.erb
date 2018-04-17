@@ -3,5 +3,5 @@
 <% else %>
     <h2><%= @article.title %></h2>
     <small><%= @article.author %></small>
-    <div><%= @article.content %></div>
+    <div><%= to_markdown @article.content %></div>
 <% end %>
