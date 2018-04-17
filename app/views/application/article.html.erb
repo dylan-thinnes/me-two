@@ -1,3 +1,7 @@
-<h2><%= @article.title %></h2>
-<small><%= @article.author %></small>
-<div><%= @article.content %></div>
+<% if @article.nil? %>
+    <h2>This article could not be found.</h2>
+<% else %>
+    <h2><%= @article.title %></h2>
+    <small><%= @article.author %></small>
+    <div><%= @article.content %></div>
+<% end %>
