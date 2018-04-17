@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
   def index
   end
 
+  def projects
+  end
+
+  def contact
+  end
+
+  def blog
+  end
+
   def article
     @article = Article.find_by(id: params[:id])
     status = 200
