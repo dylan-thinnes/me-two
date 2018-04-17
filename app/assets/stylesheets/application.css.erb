@@ -70,6 +70,19 @@ a {
 	align-self: center;
 	transition: height 0.5s ease-out 0s;
 }
+body.open {
+    justify-content: flex-start;
+    margin-top: 0px;
+}
+body.open > #profile {
+    height: 0px;
+}
+body.open > #spacer {
+    flex-grow: 0;
+}
+body.open > #blurb {
+    flex-grow: 0;
+}
 #name {
 	font-size: 1.25em;
 	text-align: center;

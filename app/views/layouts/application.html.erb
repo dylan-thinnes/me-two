@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="<%= "open" if @closed != true %>">
     <div id="spacer"></div>
     <div id="profile"></div>
     <div id="name">Dylan Thinnes</div>

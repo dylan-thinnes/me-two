@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   def index
+    @closed = true
   end
 
   def projects
