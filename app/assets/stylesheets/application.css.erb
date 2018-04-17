@@ -13,9 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+/* a tag restyling */
+a {
+	color: inherit;
+	cursor: pointer;
+}
 a::selection {
 	background-color: transparent;
 }
+
+/* Default styles */
 html {
 	background-color: #eee;
 }
@@ -31,7 +39,6 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: stretch;
-	transition: margin-top 0.5s ease-out 0s;
 	line-height: 1.2;
 	padding-bottom: 4pt;
 }
@@ -39,13 +46,22 @@ body {
 	overflow: hidden;
 	box-sizing: border-box;
 }
-a {
-	color: inherit;
-	cursor: pointer;
+
+/* social tag styling */ 
+#social {
+	padding: 0.25ch 0 0.25ch 0;
+	white-space: pre;
+	max-width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	border-bottom: 1px solid #111;
+	margin-bottom: 4pt;
 }
 #social > a {
 	color: #111;
 	text-decoration: none;
+	margin: 0.25ch;
 }
 #social > a:hover, #social > a#highlight {
 	filter: brightness(0.8);
@@ -53,6 +69,8 @@ a {
 #social > a:active {
 	filter: brightness(0.6) !important;
 }
+
+/* profile picture */
 #profile {
 	border-radius: 1em;
 	background-image: url(<%= asset_path 'profile.jpg' %>);
@@ -64,6 +82,8 @@ a {
 	align-self: center;
 	transition: height 0.5s ease-out 0s;
 }
+
+/* When body is open, what to do */
 body.open {
     justify-content: flex-start;
     margin-top: 0px;
@@ -80,24 +100,13 @@ body.open > #spacer {
 body.open > #blurb {
     flex-grow: 0;
 }
+
+/* My name and associated blurb for front page */
 #name {
 	font-size: 1.25em;
 	text-align: center;
 	border-bottom: 1px solid #111;
 	padding: 4pt 0 4pt 0;
-}
-#social {
-	padding: 0.25ch 0 0.25ch 0;
-	white-space: pre;
-	max-width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	border-bottom: 1px solid #111;
-	margin-bottom: 4pt;
-}
-#social > a {
-	margin: 0.25ch;
 }
 #blurb {
 	max-width: 700px;
@@ -107,10 +116,14 @@ body.open > #blurb {
 	height: 0;
 	transition: flex-grow 0.5s ease-out 0s;
 }
+
+/* the spacer for front page alignment */
 #spacer {
 	flex: 1 0 auto;
 	transition: flex-grow 0.5s ease-out 0s;
 }
+
+/* all content styling */
 #content {
 	flex: 0 0 auto;
 	transition: flex-grow 0.5s ease-out 0s;
@@ -138,12 +151,4 @@ body.open > #blurb {
 .section.selected {
     z-index: 1;
     opacity: 1;
-}
-.title {
-	font-size: 1.25em;
-	padding-bottom: 4pt;
-	margin-bottom: 4pt;
-}
-.para {
-	margin-bottom: 4pt;
 }
