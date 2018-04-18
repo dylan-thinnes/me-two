@@ -1,6 +1,6 @@
 <% set_title("Dylan's Blog") %>
 <%= to_markdown "## blog" %>
-<% Article.all.each do |a| %>
+<% Article.where(published: true).each do |a| %>
   <%= to_markdown "
   **[#{a.title}](/article/#{a.id})**
   #{a.blurb}
