@@ -46,7 +46,7 @@ namespace :article do
                     temp = getUserInput("blurb") { true }
                     blurb = temp if temp.present?
                 end
-                published = !(getUserConfirmation "Should this article be automatically published?")
+                published = getUserConfirmation "Should this article be automatically published?"
                 Article.create!(title: title, author: author, blurb: blurb, published: published, content: content)
             end
         end
