@@ -4,12 +4,15 @@ class ApplicationController < ActionController::Base
   end
 
   def projects
+    checkNoLayout "projects"
   end
 
   def contact
+    checkNoLayout "contact"
   end
 
   def blog
+    checkNoLayout "blog"
   end
 
   def article
@@ -21,11 +24,16 @@ class ApplicationController < ActionController::Base
       render json: @article.to_json, status: status
       return
     end
+    checkNoLayout "article"
+  end
+  protect_from_forgery with: :exception
+  
+  private
+  def checkNoLayout(name, status = 200)
     nolayout = request.query_parameters['nolayout'] == "true"
     if nolayout
-      render "article", layout: false, status: status
+      render name, layout: false, status: status
       return
     end
   end
-  protect_from_forgery with: :exception
 end
