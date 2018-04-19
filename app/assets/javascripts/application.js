@@ -27,3 +27,13 @@ bindHandler = function (a) {
 }
 
 /* URL getting and replacement */
+getContent = function (url, callback) {
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function () {
+        if (req.readyState == 4 && req.status == 200) {
+            callback(req.response);
+        }
+    }
+    req.open("GET", url + "?nolayout=true")
+    req.send();
+}
