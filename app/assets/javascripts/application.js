@@ -24,6 +24,23 @@ prevDefaultCallback = function (e) { e.preventDefault(); }
 // Binds a URI handler and calls preventDefault
 bindHandler = function (a) {
     a.addEventListener("click", prevDefaultCallback);
+    a.addEventListener("click", navigateTo.bind(window, a.href));
+}
+
+/* History state changers and handlers */
+navigateTo = function (url) {
+    history.pushState({}, "", url);
+    onNavigate();
+} 
+onNavigate = function () {
+    showCurrentPage();
+}
+window.onpopstate = onNavigate;
+
+// Main entry point for a url change (popstate) event
+// mediates between all associated content getting and embedding
+showCurrentPage () {
+    console.log("current page is", window.location.pathname);
 }
 
 /* URL getting and replacement */
@@ -37,3 +54,4 @@ getContent = function (url, callback) {
     req.open("GET", url + "?nolayout=true")
     req.send();
 }
+
