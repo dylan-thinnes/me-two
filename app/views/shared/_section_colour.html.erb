@@ -2,7 +2,6 @@
 <% path = request.path %>
 <% colour = colours[action_name.to_sym] %>
 <% colour = "#" + "%06x" % (rand * 0x444444 + 0x444444) if colour.nil? %>
-<% puts "colour", colour.inspect %>
 <% selector = raw(".section[data-url=\"#{path}\"]") %>
 <%= selector %> {
     border-color: <%= colour %>;
