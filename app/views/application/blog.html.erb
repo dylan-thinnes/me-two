@@ -1,10 +1,12 @@
 <%= render partial: "shared/section_colour" %>
 <% set_title("Dylan's Blog") %>
 <%= to_markdown "## blog" %>
-<% Article.where(published: true).each do |a| %>
-  <%= to_markdown "
-  **[#{a.title}](/article/#{a.id})**
-  #{a.blurb}
-
-  " %>
+<% Article.order(:updated_at).where(published: true).each do |a| %>
+    <p>
+      <%= link_to a.title, "/article/#{a.id}" %><br/>
+      <small>
+        <%= a.author %>, <i><%= a.updated_at.strftime("%Y %B %e") %></i><br/>
+        <%= a.blurb %>
+      </small>
+    </p>
 <% end %>
