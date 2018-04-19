@@ -15,7 +15,27 @@ module ApplicationHelper
     @title = "#{text} | Dylan Thinnes"
   end
 
-  def colours
-    return { projects: "#44af69", blog: "#f8333c", contact: "#2b9eb3" }
+  def hexify(c)
+    "%02x" % c
+  end
+
+  def base_colours
+    { projects: "#44af69", blog: "#f8333c", contact: "#2b9eb3" }
+  end
+
+  def rain_colours
+    [ "#fb5721", # reddish
+      "#efac22", # orangish
+      "#106f22", # greenish
+      "#651993", # indigoish
+      "#47478d", # blueish
+    ]
+  end
+
+  def get_colour(name)
+    colour = base_colours[name.to_sym]
+    return colour if !colour.nil?
+
+    return rain_colours[rand * rain_colours.length]
   end
 end
