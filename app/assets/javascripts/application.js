@@ -107,6 +107,7 @@ createSection = function (url, content) {
     section.setAttribute("data-url", url);
 
     document.getElementById("content").appendChild(section);
+    mockNode(section);
 
     return section;
 }
