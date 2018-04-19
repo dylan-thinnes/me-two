@@ -1,4 +1,4 @@
-<%= render partial: "shared/section_colour", locals: { path: request.path, colour: colours[action_name.to_sym]} %>
+<%= render partial: "shared/section_colour" %>
 <% if @article.nil? %>
     <h2>This article could not be found.</h2>
 <% else %>
