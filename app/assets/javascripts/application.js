@@ -1,13 +1,35 @@
 //= require_tree .
 window.addEventListener("load", function () {
-    linkEls = document.getElementsByTagName("a");
-    links = [];
-    for (var ii = 0; ii < linkEls.length; ii++) links[ii] = linkEls[ii];
-    links.filter(referencesLocal).map(bindHandler);
+    mockNode(document);
 });
 
 /* Link event binding code. */
-// Check if an <a> node references a local path
+// Given a node, finds all <a> tags and mocks them
+mockNode = function (node) {
+    links = node.getElementsByTagName("a");
+    mockCollection(links);
+}
+
+// Given an HTMLCollection, mocks the localized links
+mockCollection = function (collection) {
+    links = [];
+    // Turn collection into an array for easy filter/map
+    for (var ii = 0; ii < collection.length; ii++) {
+        links[ii] = collection[ii];
+    }
+    links.filter(referencesLocal).map(mockLink);
+}
+
+// Given an <a>, binds navigateTo and preventDefault, marks link as mocked
+mockLink = function (a) {
+    a.addEventListener("click", prevDefaultCallback);
+    a.addEventListener("click", navigateTo.bind(window, a.href));
+    a.setAttribute("data-mocked", "true");
+}
+prevDefaultCallback = function (e) { e.preventDefault(); }
+
+// Check if an <a> node references a local path and hasn't been mocked
+// mocking is the act by which we take a link and suppress it with JS
 referencesLocal = function (a) {
     // Use a.getAttribute instead of a.href since a.href coerces to full url
     url = a.getAttribute("href");
@@ -15,16 +37,12 @@ referencesLocal = function (a) {
     // If the link has no href, ignore it
     if (url == undefined) return false;
 
+    // If the link has already been mocked
+    if (a.getAttribute("data-mocked") == "true") return false;
+
     // If the link has a URI scheme, consider it non-local
     hasScheme = (/^\w+:\/\//).test(url)
     return !hasScheme;
-}
-
-prevDefaultCallback = function (e) { e.preventDefault(); }
-// Binds a URI handler and calls preventDefault
-bindHandler = function (a) {
-    a.addEventListener("click", prevDefaultCallback);
-    a.addEventListener("click", navigateTo.bind(window, a.href));
 }
 
 /* History state changers and handlers */
