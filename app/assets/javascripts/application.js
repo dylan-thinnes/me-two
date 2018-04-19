@@ -59,17 +59,26 @@ window.onpopstate = onNavigate;
 // mediates between all associated content getting and embedding
 showCurrentPage = function () {
     var path = window.location.pathname;
+
+    // If we are navigating to root, simply close the current page and stop.
+    if (path === "/") {
+        document.body.classList.remove("open");
+        return;
+    }
+
     var section = findSection(path);
     if (section == undefined) {
         console.log("section does not exist", path)
         getContent(path, function (content) {
             var section = createSection(path, content);
             setTitleFromSection(section);
+            document.body.classList.add("open");
             setTimeout(selectSection.bind(window, path), 100);
         });
     } else {
         var section = selectSection(path);
         setTitleFromSection(section);
+        document.body.classList.add("open");
     }
 }
 
