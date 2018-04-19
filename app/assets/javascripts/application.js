@@ -39,11 +39,22 @@ window.onpopstate = onNavigate;
 
 // Main entry point for a url change (popstate) event
 // mediates between all associated content getting and embedding
-showCurrentPage () {
-    console.log("current page is", window.location.pathname);
+showCurrentPage = function () {
+    var path = window.location.pathname;
+    var section = findSection(path);
+    if (section == undefined) {
+        console.log("section does not exist", path)
+        getContent(path, function (content) {
+            createSection(path, content);
+            setTimeout(selectSection.bind(window, path), 100);
+        });
+    } else {
+        selectSection(path);
+    }
 }
 
 /* URL getting and replacement */
+// gets the content at the endpoint without the layout
 getContent = function (url, callback) {
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
@@ -55,3 +66,38 @@ getContent = function (url, callback) {
     req.send();
 }
 
+/* Section Management */
+// Sections contain the content for a given endpoint and have a data-url attr
+// The page may be initialized with any number of sections
+
+// Finds the section corresponding to a given url
+findSection = function (url) {
+    var sections = document.getElementsByClassName("section");
+    for (var ii = 0; ii < sections.length; ii++) {
+        var section = sections[ii];
+        var sectionUrl = section.getAttribute("data-url");
+        if (sectionUrl == url) return section;
+    }
+}
+
+// create a section container for content retrieved from an endpoint
+// append it to the page container
+createSection = function (url, content) {
+    var section = document.createElement("div");
+    section.classList.add("section");
+    section.innerHTML = content;
+    section.setAttribute("data-url", url);
+
+    document.getElementById("content").appendChild(section);
+
+    return section;
+}
+
+// select a section, hide whatever section isn't
+selectSection = function (url) {
+    var sections = document.getElementsByClassName("section");
+    for (var ii = 0; ii < sections.length; ii++) {
+        sections[ii].classList.remove("selected");
+    }
+    findSection(url).classList.add("selected");
+}
