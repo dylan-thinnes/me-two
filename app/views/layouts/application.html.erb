@@ -19,7 +19,7 @@
     </div>
     <div id="blurb">I am a student of Comp Sci at the University of Edinburgh.<br/>In my spare time, I enjoy camping, Aikido, and coding.</div>
     <div id="content">
-      <div class="section <%= action_name %> selected">
+      <div class="section selected" data-url="<%= request.fullpath %>">
         <%= yield %>
       </div>
     </div>
