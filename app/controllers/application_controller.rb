@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     checkNoLayout "blog"
   end
 
+  def about
+    checkNoLayout "about"
+  end
+
   def article
     @article = Article.find_by(id: params[:id])
     status = 200
