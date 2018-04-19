@@ -1,0 +1,15 @@
+<style>
+<% colour = "#" + "%06x" % (rand * 0x444444 + 0x444444) if colour.nil? %>
+<% puts "colour", colour.inspect %>
+<% selector = raw(".section[data-url=\"#{path}\"]") %>
+<%= selector %> {
+    border-color: <%= colour %>;
+}
+<%= selector %> h1, <%= selector %> h2, <%= selector %> h3, <%= selector %> h4, <%= selector %> h5, <%= selector %> h6 {
+    color: <%= colour %>;
+    border-bottom: 2px solid <%= colour %>;
+}
+<%= selector %> a {
+    color: <%= colour %>;
+}
+</style>
