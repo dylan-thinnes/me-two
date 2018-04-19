@@ -2,9 +2,10 @@
 <% set_title("Projects") %>
 <%= to_markdown "## projects" %>
 <% Project.all.each do |p| %>
-  <%= to_markdown "
-  **[#{p.name}](#{p.link})**
-  #{p.content}
-
-  " %>
+    <p><a href="<%= p.link %>" class="entry">
+      <b class="text"><%= p.name %></b><br/>
+      <small>
+        <%= p.content %>
+      </small>
+    </a></p>
 <% end %>

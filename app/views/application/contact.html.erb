@@ -1,13 +1,24 @@
 <%= render partial: "shared/section_colour" %>
 <% set_title("Contact Me") %>
-<%= to_markdown("
-## contact & cv
-[dylan.thinnes@protonmail.com](mailto://dylan.thinnes@protonmail.com)
+<h2>contact & cv</h2>
+<% entries = [
+{ link: "mailto://dylan.thinnes@protonmail.com",
+  title: "dylan.thinnes@protonmail.com",
+  text: "
 This email is for general inquiries and items not directly related to programming.
-Reply time will be anywhere from 0.5-7 days depending on urgency, time of year, and timezones.
-
-[github/dylan-thinnes](https://github.com/dylan-thinnes)
-For inquiry/discussion related to programming, especially one of my existing projects, I recommend contacting me on GitHub.
-
-[For my CV, click here](/assets/images/cv.pdf)
-") %>
+Reply time will be anywhere from 0.5-7 days depending on urgency, time of year, and timezones." },
+{ title: "github/dylan-thinnes",
+  link: "https://github.com/dylan-thinnes",
+  text: "For inquiry/discussion related to programming, especially one of my existing projects, I recommend contacting me on GitHub." },
+{ title: "For my CV, click here.",
+  link: "/assets/images/cv.pdf"
+}
+] %>
+<% entries.each do |e| %>
+    <p><a href="<%= e[:link] %>" class="entry">
+      <b class="text"><%= e[:title] %></b><br/>
+      <small>
+        <%= e[:text] %>
+      </small>
+    </a></p>
+<% end %>
