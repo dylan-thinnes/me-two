@@ -63,12 +63,22 @@ showCurrentPage = function () {
     if (section == undefined) {
         console.log("section does not exist", path)
         getContent(path, function (content) {
-            createSection(path, content);
+            var section = createSection(path, content);
+            setTitleFromSection(section);
             setTimeout(selectSection.bind(window, path), 100);
         });
     } else {
-        selectSection(path);
+        var section = selectSection(path);
+        setTitleFromSection(section);
     }
+}
+
+setTitleFromSection = function (section) {
+    var newTitle = section.getElementsByTagName("title")[0];
+    console.log("setting title from section", section, newTitle);
+    if (newTitle == undefined) return window.title = "Dylan Thinnes";
+    
+    return document.title = newTitle.innerHTML;
 }
 
 /* URL getting and replacement */
@@ -118,5 +128,7 @@ selectSection = function (url) {
     for (var ii = 0; ii < sections.length; ii++) {
         sections[ii].classList.remove("selected");
     }
-    findSection(url).classList.add("selected");
+    section = findSection(url);
+    section.classList.add("selected");
+    return section;
 }

@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   def checkNoLayout(name, status = 200)
     nolayout = request.query_parameters['nolayout'] == "true"
     if nolayout
-      render name, layout: false, status: status
+      render name, layout: "nolayout", status: status
       return
     end
   end
