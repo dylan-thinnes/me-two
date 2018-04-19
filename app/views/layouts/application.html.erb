@@ -13,13 +13,21 @@
     <%= render "profile" if action_name == "index" %>
     <div id="name">Dylan Thinnes</div>
     <div id="social">
+      <style>
+/* section colourings */
+<% colours.each do |key, value| %>
+.<%= key %>-bg {
+    background-color: <%= value %>;
+}
+<% end %>
+      </style>
       <%= link_to " contact ",  contact_path,  class: "contact-bg"  %>
       <%= link_to " projects ", projects_path, class: "projects-bg" %>
       <%= link_to " blog ",     blog_path,     class: "blog-bg"     %>
     </div>
     <div id="blurb">I am a student of Comp Sci at the University of Edinburgh.<br/>In my spare time, I enjoy camping, Aikido, and coding.</div>
     <div id="content">
-      <div class="section selected" data-url="<%= request.fullpath %>">
+      <div class="section selected" data-url="<%= request.path %>">
         <%= yield %>
       </div>
     </div>

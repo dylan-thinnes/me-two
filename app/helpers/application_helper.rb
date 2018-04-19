@@ -14,4 +14,8 @@ module ApplicationHelper
   def set_title(text)
     @title = "#{text} | Dylan Thinnes"
   end
+
+  def colours
+    return { projects: "#44af69", blog: "#f8333c", contact: "#2b9eb3" }
+  end
 end
