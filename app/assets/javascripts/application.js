@@ -9,10 +9,10 @@ window.addEventListener("load", function () {
 /* Link event binding code. */
 // Check if an <a> node references a local path
 referencesLocal = function (a) {
-    // Use getAttribute instead of .href since .href coerces to full url
+    // Use a.getAttribute instead of a.href since a.href coerces to full url
     url = a.getAttribute("href");
     
-    // If the link is a dummy, ignore it
+    // If the link has no href, ignore it
     if (url == undefined) return false;
 
     // If the link has a URI scheme, consider it non-local
