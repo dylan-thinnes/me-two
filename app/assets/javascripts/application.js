@@ -63,6 +63,7 @@ showCurrentPage = function () {
     // If we are navigating to root, simply close the current page and stop.
     if (path === "/") {
         document.body.classList.remove("open");
+        document.getElementById("profile").style.display = null;
         return;
     }
 
