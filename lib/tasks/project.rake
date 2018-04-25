@@ -22,4 +22,20 @@ namespace :project do
             end
         end
     end
+    task :remove, [:id] => [:environment] do |t, args|
+        Project.connection
+        id = args[:id]
+        Project.find(id).delete
+    end
+    task :search, [:prop, :value] => [:environment] do |t, args|
+        Project.connection
+        prop = args[:prop]
+        value = args[:value]
+        searchHash = {}
+        searchHash[prop] = value
+        articles = Project.where(searchHash)
+        articles.each do |a|
+            puts "#{a.id}: #{a.name}"
+        end
+    end
 end

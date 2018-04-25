@@ -46,4 +46,20 @@ namespace :article do
     task :add, [:article] => [:environment] do |t, args|
         getArticle(args[:article]) { |f| addArticle f }
     end
+    task :remove, [:id] => [:environment] do |t, args|
+        Article.connection
+        id = args[:id]
+        Article.find(id).delete
+    end
+    task :search, [:prop, :value] => [:environment] do |t, args|
+        Article.connection
+        prop = args[:prop]
+        value = args[:value]
+        searchHash = {}
+        searchHash[prop] = value
+        articles = Article.where(searchHash)
+        articles.each do |a|
+            puts "#{a.id}: #{a.title}"
+        end
+    end
 end
