@@ -15,7 +15,7 @@ Reply time will be anywhere from 0.5-7 days depending on urgency, time of year, 
 }
 ] %>
 <% entries.each do |e| %>
-    <p><a href="<%= e[:link] %>" class="entry">
+    <p><a href="<%= e[:link] %>" class="entry" data-disable-mocking="true">
       <b class="text"><%= e[:title] %></b><br/>
       <small>
         <%= e[:text] %>
