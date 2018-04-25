@@ -37,6 +37,9 @@ referencesLocal = function (a) {
     // If the link has no href, ignore it
     if (url == undefined) return false;
 
+    // If the link has mocking disabled, ignore it
+    if (a.getAttribute("data-disable-mocking") == "true") return false;
+
     // If the link has already been mocked
     if (a.getAttribute("data-mocked") == "true") return false;
 
