@@ -12,7 +12,7 @@
   <body class="<%= "open" if @closed != true %>">
     <div id="spacer"></div>
     <%= render "profile" %>
-    <div id="name">Dylan Thinnes</div>
+    <div id="name"><%= link_to "Dylan Thinnes", "/", class: "reset" %></div>
     <div id="social">
       <style>
 /* section colourings */
