@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def base_colours
-    { projects: "#44af69", blog: "#f8333c", contact: "#2b9eb3", about: "#fcab30" }
+    { projects: "#44af69", blog: "#f8333c", contact: "#2b9eb3", about: "#ff6600" }
   end
 
   def rain_colours
