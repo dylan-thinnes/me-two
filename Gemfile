@@ -45,6 +45,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  # realfavicongenerator.net's favicon, made on 180424
+  gem 'rails_real_favicon'
 end
 
 group :development do
