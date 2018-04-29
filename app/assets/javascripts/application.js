@@ -67,6 +67,7 @@ showCurrentPage = function () {
     if (path === "/") {
         document.body.classList.remove("open");
         document.getElementById("profile").style.display = null;
+        setTitleFromSection();
         return;
     }
 
@@ -87,9 +88,10 @@ showCurrentPage = function () {
 }
 
 setTitleFromSection = function (section) {
+    if (section == undefined) return document.title = "Dylan Thinnes";
+
     var newTitle = section.getElementsByTagName("title")[0];
-    console.log("setting title from section", section, newTitle);
-    if (newTitle == undefined) return window.title = "Dylan Thinnes";
+    if (newTitle == undefined) return document.title = "Dylan Thinnes";
     
     return document.title = newTitle.innerHTML;
 }
