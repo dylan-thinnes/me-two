@@ -13,7 +13,7 @@
   </head>
 
   <body class="<%= "open" if @closed != true %>">
-    <div id="spacer"></div>
+    <div class="spacer"></div>
     <%= render "profile" %>
     <div id="name"><%= link_to "Dylan Thinnes", "/", class: "reset" %></div>
     <div id="social">
@@ -37,5 +37,6 @@
         <%= yield %>
       </div>
     </div>
+    <div class="spacer"></div>
   </body>
 </html>

@@ -34,16 +34,16 @@ body {
 	color: #111;
 	font-size: 12pt;
 	position: relative;
-	margin: -32pt auto 0 auto;
+	margin: 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: stretch;
 	line-height: 1.2;
 	padding-bottom: 4pt;
+	overflow: hidden;
 }
 * {
-	overflow: hidden;
 	box-sizing: border-box;
 }
 
@@ -98,11 +98,12 @@ body.open > #content {
 body.open > #profile {
     height: 0px;
 }
-body.open > #spacer {
+body.open > .spacer {
     flex-grow: 0;
 }
 body.open > #blurb {
-    flex-grow: 0;
+    height: 0;
+    overflow-y: hidden;
 }
 
 /* My name and associated blurb for front page */
@@ -116,12 +117,13 @@ body.open > #blurb {
 	max-width: 700px;
 	text-align: center;
 	align-self: center;
-	flex: 1 0 auto;
-	height: 0;
+	flex: 0 0 auto;
+	height: 4em;
+    overflow-y: visible;
 }
 
-/* the spacer for front page alignment */
-#spacer {
+/* the spacers for front page alignment */
+.spacer {
 	flex: 1 0 auto;
 }
 

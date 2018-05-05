@@ -65,9 +65,13 @@ showCurrentPage = function () {
 
     // If we are navigating to root, simply close the current page and stop.
     if (path === "/") {
-        document.body.classList.remove("open");
         document.getElementById("profile").style.display = null;
-        setTitleFromSection();
+        // Add small delay to allow profile to be ready to flex before content
+        // closes and blurb fades in
+        setTimeout(function () {
+            document.body.classList.remove("open");
+            setTitleFromSection();
+        }, 20);
         return;
     }
 
