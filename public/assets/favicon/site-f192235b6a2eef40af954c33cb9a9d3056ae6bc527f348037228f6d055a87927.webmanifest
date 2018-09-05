@@ -1,0 +1,14 @@
+{
+    "name": "Dylan Thinnes",
+    "short_name": "Dylan Thinnes",
+    "icons": [
+        {
+            "src": "/assets/favicon/android-chrome-192x192-32a1580e4b9cf7ff0f17ecc707231f94a9465c5da0bd32f1d886f91ee3040941.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
