@@ -78,10 +78,11 @@ showCurrentPage = function () {
     var section = findSection(path);
     if (section == undefined) {
         console.log("section does not exist", path)
+        clearSelection();
+        document.body.classList.add("open");
         getContent(path, function (content) {
             var section = createSection(path, content);
             setTitleFromSection(section);
-            document.body.classList.add("open");
             setTimeout(selectSection.bind(window, path), 100);
         });
     } else {
@@ -135,19 +136,26 @@ createSection = function (url, content) {
     section.innerHTML = content;
     section.setAttribute("data-url", url);
 
-    document.getElementById("content").appendChild(section);
+    var loading = document.getElementById("loading");
+
+    document.getElementById("content").insertBefore(section, loading);
     mockNode(section);
 
     return section;
 }
 
-// select a section, hide whatever section isn't
+// select a section
 selectSection = function (url) {
+    clearSelection();
+    section = findSection(url);
+    section.classList.add("selected");
+    return section;
+}
+
+// unselect all sections
+clearSelection = function (url) {
     var sections = document.getElementsByClassName("section");
     for (var ii = 0; ii < sections.length; ii++) {
         sections[ii].classList.remove("selected");
     }
-    section = findSection(url);
-    section.classList.add("selected");
-    return section;
 }

@@ -151,9 +151,19 @@ body.open > #blurb {
     border-style: solid;
     border-color: transparent;
 }
-.section.selected {
+.section.selected, #loading {
     z-index: 1;
     opacity: 1;
+}
+.section.selected ~ #loading, .section.selected ~ .section#loading > .text {
+    z-index: -1;
+    opacity: 0;
+}
+.section#loading, .section#loading > .text {
+    font-size: 1.5rem;
+    text-align: center;
+    padding-top: 2rem;
+    color: #999;
 }
 
 /* Transition styles */
@@ -169,4 +179,10 @@ body {
 }
 .spacer, #content {
 	transition: flex-grow 0.5s ease-out 0s;
+}
+.section#loading {
+    transition-delay: 0.5s;
+}
+.section#loading > .text {
+	transition-delay: 0s;
 }

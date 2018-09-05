@@ -8,7 +8,6 @@
     <%= render 'application/favicon' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= render "shared/transition_styles" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -35,6 +34,9 @@
       <div class="section selected" data-url="<%= request.path %>">
         <title><%= get_title %></title>
         <%= yield %>
+      </div>
+      <div class="section" id="loading">
+          <div class="text">Loading...</div>
       </div>
     </div>
     <div class="spacer"></div>
