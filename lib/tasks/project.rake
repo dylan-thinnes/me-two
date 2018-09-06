@@ -54,6 +54,10 @@ namespace :project do
             puts "#{a.id}: #{a.name}"
         end
     end
+    task :remove_all, [] => [:environment] do |t, args|
+        Project.connection
+        Project.destroy_all
+    end
     task :add_all, [:directory] => [:environment] do |t, args|
         relPath = args[:directory] ? args[:directory] : "./projects"
         absPath = File.join(Dir.pwd, relPath)
