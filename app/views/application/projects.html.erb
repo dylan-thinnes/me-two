@@ -2,8 +2,16 @@
 <% set_title("Projects") %>
 <%= to_markdown "## projects" %>
 <% Project.all.each do |p| %>
+  <% if p.deprecated %>
+    <p><a class="disabled entry">
+  <% else %>
     <p><a href="<%= p.link %>" class="entry">
-      <b class="text"><%= p.name %></b><br/>
+  <% end %>
+      <b class="text">
+          <%= p.name %>
+      </b>
+      <% if p.deprecated %><small><b>(Deprecated)</b></small><% end %>
+      <br/>
       <small>
         <%= p.content %>
       </small>
