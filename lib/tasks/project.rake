@@ -17,7 +17,8 @@ def addProject(fileName)
             metadata = metadata.map { |l| l.chomp }
             name, link, precedence = metadata
             puts "File found with metadata: \nname: #{name}\nlink: #{link}\nprecedence: #{precedence}"
-            deprecated = true if link.match(/^#/) != nil
+            deprecated = link.match(/^#/) != nil
+            puts "deprecated: #{deprecated}"
 
             content = lines.drop_while { |l| l.chomp.match(/^\s*$/) == nil }
             content = content[1..-1]
@@ -28,8 +29,8 @@ def addProject(fileName)
               link: link, 
               content: content, 
             )
-            p.update_attributes(deprecated: deprecated) if deprecated
-            p.update_attributes(precedence: precedence) if precedence
+            p.update_attributes(deprecated: deprecated) if deprecated != nil
+            p.update_attributes(precedence: precedence) if precedence != nil
         end
     end
 end
