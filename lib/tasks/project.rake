@@ -4,8 +4,7 @@ def addProject(fileName)
         puts "You must specify an project."
     else
         begin
-            absPath = File.join(Dir.pwd, fileName)
-            puts "Searching for project file in #{absPath}."
+            puts "Searching for project file in #{fileName}."
             file = File.read(fileName)
         rescue 
             puts "#{fileName} not found."
@@ -14,11 +13,13 @@ def addProject(fileName)
         if !file.nil?
             lines = file.lines
 
-            metadata = lines.take_while { |l| l.chomp.match(/^\s*$/) != nil }
+            metadata = lines.take_while { |l| l.chomp.match(/^\s*$/) == nil }
+            metadata = metadata.map { |l| l.chomp }
             name, link, precedence = metadata
-            deprecated = true if link.match(/^#/) == nil
+            puts "File found with metadata: \nname: #{name}\nlink: #{link}\nprecedence: #{precedence}"
+            deprecated = true if link.match(/^#/) != nil
 
-            content = lines.drop_while { |l| l.chomp.match(/^\s*$/) != nil }
+            content = lines.drop_while { |l| l.chomp.match(/^\s*$/) == nil }
             content = content[1..-1]
             content = content.join
 
