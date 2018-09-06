@@ -14,11 +14,11 @@ def addProject(fileName)
         if !file.nil?
             lines = file.lines
 
-            metadata = lines.take_while { |l| !l.chomp.match?(/^\s*$/) }
+            metadata = lines.take_while { |l| l.chomp.match(/^\s*$/) != nil }
             name, link, precedence = metadata
-            deprecated = true if link.length < 1 || link.match?(/^#/)
+            deprecated = true if link.match(/^#/) == nil
 
-            content = lines.drop_while { |l| !l.chomp.match?(/^\s*$/) }
+            content = lines.drop_while { |l| l.chomp.match(/^\s*$/) != nil }
             content = content[1..-1]
             content = content.join
 
