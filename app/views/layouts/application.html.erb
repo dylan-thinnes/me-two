@@ -9,7 +9,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= render 'shared/transitions' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="<%= "open" if @closed != true %>">
@@ -41,5 +40,6 @@
       </div>
     </div>
     <div class="spacer"></div>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>

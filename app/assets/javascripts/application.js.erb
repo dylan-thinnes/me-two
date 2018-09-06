@@ -1,7 +1,4 @@
 //= require_tree .
-window.addEventListener("load", function () {
-    mockNode(document);
-});
 
 /* Link event binding code. */
 // Given a node, finds all <a> tags and mocks them
@@ -65,7 +62,8 @@ showCurrentPage = function () {
 
     // If we are navigating to root, simply close the current page and stop.
     if (path === "/") {
-        document.getElementById("profile").style.display = null;
+        var profile = document.getElementById("profile");
+        profile.style.backgroundImage = "url(<%= asset_path 'profile.jpg' %>)";
         // Add small delay to allow profile to be ready to flex before content
         // closes and blurb fades in
         setTimeout(function () {
@@ -159,3 +157,7 @@ clearSelection = function (url) {
         sections[ii].classList.remove("selected");
     }
 }
+
+// Initialize mocking of links in page.
+mockNode(document);
+console.log("Nodes mocked.")
