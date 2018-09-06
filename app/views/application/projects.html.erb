@@ -1,7 +1,7 @@
 <%= render partial: "shared/section_colour" %>
 <% set_title("Projects") %>
 <%= to_markdown "## projects" %>
-<% Project.all.each do |p| %>
+<% Project.all.order(precedence: :desc).each do |p| %>
   <% if p.deprecated %>
     <p><a class="disabled entry">
   <% else %>
