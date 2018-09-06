@@ -4,19 +4,31 @@ def addProject(fileName)
         puts "You must specify an project."
     else
         begin
+            absPath = File.join(Dir.pwd, fileName)
+            puts "Searching for project file in #{absPath}."
             file = File.read(fileName)
         rescue 
             puts "#{fileName} not found."
             puts "You must specify an existing file."
         end
         if !file.nil?
-            parts = file.lines
-            name = parts[0].chomp
-            link = parts[1].chomp
-            content = parts[3..-1].join
-            deprecated = link.length < 1 || link.match?(/^#/)
+            lines = file.lines
+
+            metadata = lines.take_while { |l| !l.chomp.match?(/^\s*$/) }
+            name, link, precedence = metadata
+            deprecated = true if link.length < 1 || link.match?(/^#/)
+
+            content = lines.drop_while { |l| !l.chomp.match?(/^\s*$/) }
+            content = content[1..-1]
+            content = content.join
+
             p = Project.where(name: name).first_or_create
-            p.update_attributes(link: link, content: content, deprecated: deprecated)
+            p.update_attributes(
+              link: link, 
+              content: content, 
+            )
+            p.update_attributes(deprecated: deprecated) if deprecated
+            p.update_attributes(precedence: precedence) if precedence
         end
     end
 end
