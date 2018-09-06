@@ -17,8 +17,9 @@ namespace :project do
                 name = parts[0].chomp
                 link = parts[1].chomp
                 content = parts[3..-1].join
+                deprecated = link.length < 1 || link.match?(/^#/)
                 p = Project.where(name: name).first_or_create
-                p.update_attributes(link: link, content: content)
+                p.update_attributes(link: link, content: content, deprecated: deprecated)
             end
         end
     end
