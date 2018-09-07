@@ -7,7 +7,10 @@
 
     <%= render 'application/favicon' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <style>
+      <%= Rails.application.assets_manifest.find_sources('application.css').first.to_s.html_safe %>
+    </style>
     <%= render 'shared/transitions' %>
   </head>
 
