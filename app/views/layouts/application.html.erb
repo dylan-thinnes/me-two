@@ -43,6 +43,9 @@
       </div>
     </div>
     <div class="spacer"></div>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script>
+      <%= Rails.application.assets_manifest.find_sources('application.js').first.to_s.html_safe %>
+    </script>
   </body>
 </html>
